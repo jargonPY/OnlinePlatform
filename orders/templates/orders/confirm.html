@@ -1,0 +1,45 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body %}
+  <div class="align-table">
+    <h4 class="table-title">Your Order:</h4>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Dish</th>
+          <th>Size</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in ordered %}
+          <tr>
+            {% if item.1.type == "Topping" %}
+              <td style="border:0">{{ item.1.type }}: {{ item.1.name }}</td>
+              <td style="border:0">{{ item.1.size }}</td>
+              <td style="border:0"></td>
+            {% else %}
+              <td>{{ item.1.type }}: {{ item.1.name }}</td>
+              <td>{{ item.1.size }}</td>
+              <td>${{ item.1.price }}</td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+        <tr>
+          <td>Total</td>
+          <td></td>
+          <td>{{ total_price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <a href="{% url 'cart' %}"><button type="button" class="button payment_button but_bottom">Back to Cart</button></a>
+  <form action="{% url 'confirm' %}" method="post" class="inline">
+    {% csrf_token %}
+    <button type="submit" class="button payment_button but_bottom">Confirm</button>
+  </form>
+{% endblock %}

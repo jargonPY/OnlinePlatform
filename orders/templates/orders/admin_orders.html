@@ -1,0 +1,38 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}
+  Admin
+{% endblock %}
+
+{% block body %}
+    <div class="align-table">
+      <h4 class="table-title">Orders</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>Dish</th>
+            <th>Size</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+            <tr>
+              {% if order.item.type == "Topping" %}
+                <th style="border:0"></th>
+                <td style="border:0">{{ order.item.type }}: {{ order.item.name }}</td>
+                <td style="border:0">{{ order.item.size }}</td>
+                <td style="border:0"></td>
+              {% else %}
+                <th>{{ order.order_number }}</th>
+                <td>{{ order.item.type }}: {{ order.item.name }}</td>
+                <td>{{ order.item.size }}</td>
+                <td>${{ order.item.price }}</td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% endblock %}

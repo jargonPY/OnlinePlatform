@@ -1,0 +1,53 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}
+  Cart
+{% endblock %}
+
+{% block body %}
+  {% if empty %}
+  <div class="forms">
+    <h4 class="table-title">Your cart is currently empty.</h4>
+    <a href="{% url 'index' %}"><button type="button" class="btn button">Continue Shopping</button></a>
+  </div>
+  {% else %}
+    <div class="align-table">
+      <h4 class="table-title">Cart</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Dish</th>
+            <th>Size</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in ordered %}
+            <tr>
+              {% if item.1.type == "Topping" %}
+                <th style="border:0"></th>
+                <td style="border:0">{{ item.1.type }}: {{ item.1.name }}</td>
+                <td style="border:0">{{ item.1.size }}</td>
+                <td style="border:0"></td>
+              {% else %}
+                <th scope="row"><button id="{{ item.0 }}" class="minus radius" onclick=remove_item(this)></button></th>
+                <td>{{ item.1.type }}: {{ item.1.name }}</td>
+                <td>{{ item.1.size }}</td>
+                <td>${{ item.1.price }}</td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+          <tr>
+            <th scope="row"></th>
+            <td>Total</td>
+            <td></td>
+            <td>${{ total_price }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <a href="{% url 'confirm' %}"><button type="button" class="button payment_button but_bottom">Proceed to Checkout</button></a>
+
+  {% endif %}
+{% endblock %}

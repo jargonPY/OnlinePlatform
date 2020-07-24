@@ -1,0 +1,116 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}
+  Menu
+{% endblock %}
+
+{% block body %}
+  {% if size %}
+    {% if product == "Regular Pizza" or product == "Sicilian Pizza" %}
+      <div class="pizza_table">
+          <h4 class="table-title">{{ product }}</h4>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Small</th>
+                <th>Large</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in items %}
+                <tr>
+                  <td>{{ item.name }}</td>
+                  {% if user.is_authenticated %}
+                    <td><button id="{{ item.id }}" name="small" onclick="clicked(this)" class="plus radius"></button> ${{ item.price_small }}</td>
+                    <td><button id="{{ item.id }}" name="large" onclick="clicked(this)" class="plus radius"></button> ${{ item.price_large }}</td>
+                  {% else %}
+                    <td>${{ item.price_small }}</td>
+                    <td>${{ item.price_large }}</td>
+                  {% endif %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="topping_table">
+            <h4 class="table-title">Toppings</h4>
+            <table class="table table-striped">
+              <tbody>
+                {% for topping in toppings %}
+                  <tr>
+                    {% if user.is_authenticated %}
+                      <td><button id="{{ topping.0.id }}" onclick="toppings(this)" class="plustop radius"></button> {{ topping.0.name }}</td>
+                      <td><button id="{{ topping.1.id }}" onclick="toppings(this)" class="plustop radius"></button> {{ topping.1.name }}</td>
+                      <td><button id="{{ topping.2.id }}" onclick="toppings(this)" class="plustop radius"></button> {{ topping.2.name }}</td>
+                    {% else %}
+                      <td>{{ topping.0.name }}</td>
+                      <td>{{ topping.1.name }}</td>
+                      <td>{{ topping.2.name }}</td>
+                    {% endif %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+      </div>
+    {% else %}
+    <div class="align-table">
+      <h4 class="table-title">{{ product }}</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Small</th>
+            <th>Large</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+            <tr>
+              <td>{{ item.name }}</td>
+              {% if item.price_small == None %}
+                <td></td>
+              {% else %}
+                {% if user.is_authenticated %}
+                  <td><button id="{{ item.id }}" name="small" onclick="clicked(this)" class="plus radius"></button> ${{ item.price_small }}</td>
+                {% else %}
+                  <td>${{ item.price_small }}</td>
+                {% endif %}
+              {% endif %}
+                {% if user.is_authenticated %}
+                  <td><button id="{{ item.id }}" name="large" onclick="clicked(this)" class="plus radius"></button> ${{ item.price_large }}</td>
+                {% else %}
+                  <td>${{ item.price_large }}</td>
+                {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
+  {% else %}
+  <div class="align-table">
+    <h4 class="table-title">{{ product }}</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          <tr>
+            <td>{{ item.name }}</td>
+            {% if user.is_authenticated %}
+              <td><button id="{{ item.id }}" name="regular" onclick="clicked(this)" class="plus radius"></button>${{ item.price_one }}</td>
+            {% else %}
+              <td>${{ item.price_one }}</td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+{% endblock %}

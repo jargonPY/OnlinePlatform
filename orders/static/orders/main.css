@@ -1,0 +1,167 @@
+.nav-link {
+  color: #b3b3b3;
+  font-weight: 800;
+  font-family: "Apple Chancery", cursive;
+  font-size: 25px;
+}
+
+.nav-link:hover {
+  color:#616060;
+}
+
+
+th, td {
+  color: #b3b3b3;
+}
+
+table th {
+    width: 10% !important;
+}
+
+.but_bottom {
+  margin-bottom: 100px;
+  padding-left: 10%;
+}
+
+.but_bottom:focus {
+  outline: none;
+}
+
+.topping_table {
+  padding-top: 30px;
+}
+
+.pizza_table {
+  width: 70%;
+  padding-left: 10%;
+  padding-top: 5%;
+}
+
+.side-menu {
+  padding-left: 0.5%;
+  padding-top: 50%;
+
+}
+
+.align-table {
+  width: 70%;
+  padding-left: 10%;
+  padding-top: 10%;
+  height: 600px;
+  overflow-y: auto;
+}
+
+.title {
+  color: #595349;
+  padding-left: 34%;
+  padding-top: 2%;
+  font-family: "Luminari", fantasy;
+  font-size: 60px;
+  font-weight: 800;
+}
+
+.table-title {
+  color: #b3b3b3;
+}
+
+.inline {
+  display: inline-block;
+}
+
+/* .plus is used for the add sign beside menu items */
+.plus {
+  display:inline-block;
+  width:20px;
+  height:20px;
+
+  background:
+    linear-gradient(#fff,#fff),
+    linear-gradient(#fff,#fff),
+    #000;
+  background-position:center;
+  background-size: 50% 2px,2px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat:no-repeat;
+}
+
+/* .plus is used for the topping sign beside menu items */
+.plustop {
+  display:none;
+  width:20px;
+  height:20px;
+
+  background:
+    linear-gradient(#fff,#fff),
+    linear-gradient(#fff,#fff),
+    #000;
+  background-position:center;
+  background-size: 50% 2px,2px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat:no-repeat;
+}
+
+.radius {
+  border-radius:50%;
+}
+
+.plus:hover {
+  cursor:pointer;
+}
+
+/* .minus is used to remove items from the cart */
+.minus {
+  display:inline-block;
+  width:20px;
+  height:20px;
+
+  background:
+    linear-gradient(#fff,#fff),
+    #000;
+  background-position:center;
+  background-size: 50% 2px,2px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat:no-repeat;
+}
+
+/* remove the highlight arround the add button after onclick */
+.plus:focus {
+  outline: none;
+}
+
+.forms {
+  width: 60%;
+  padding-top: 8%;
+  padding-left: 10%;
+}
+
+.forms label {
+  color: #b3b3b3;
+  font-size: 20px;
+}
+
+.button {
+  color: #b3b3b3;
+  font-weight: 800;
+  font-family: "Apple Chancery", cursive;
+  font-size: 25px;
+  background-color: Transparent;
+}
+
+.button:hover {
+  color:#616060;
+}
+
+.payment_button {
+  margin-top: 10px;
+  border: none;
+}
+
+.placed {
+  color: #b3b3b3;
+  font-size: 30px;
+  margin-top: 10%;
+  margin-left: 14%;
+}
+
+.homepage {
+  margin-top: 30px;
+  font-size: 22px;
+  font-family:  Marker Felt, fantasy;
+}
