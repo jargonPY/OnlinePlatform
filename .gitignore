@@ -1,1 +1,5 @@
 .DS_Store
+pizza/.DS_Store
+pizza/__pycache__/
+orders/.DS_Store
+orders/__pycache__/
